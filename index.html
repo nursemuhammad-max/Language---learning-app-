@@ -1,223 +1,620 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ckb" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lingua - Learn Languages</title>
+<meta name="theme-color" content="#17152b">
+<title>Zmanzan | زمانزان</title>
 
 <style>
-* {
-  box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #111020;
+  --panel: #1d1b32;
+  --panel2: #27243e;
+  --purple: #a78bfa;
+  --purple2: #8062e9;
+  --text: #f7f4ff;
+  --muted: #aaa5c1;
+  --green: #73d6ae;
+  --border: rgba(255,255,255,.08);
 }
+
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f5f4ff;
-  color: #252344;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans Arabic', sans-serif;
+  min-height: 100vh;
 }
 
-.container {
-  max-width: 480px;
+button { font: inherit; cursor: pointer; }
+
+.app {
+  width: 100%;
+  max-width: 650px;
   margin: auto;
-  padding: 25px 20px;
+  padding: 22px 18px 105px;
 }
 
-.header {
+header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-bottom: 35px;
+  justify-content: space-between;
+  margin-bottom: 28px;
 }
 
 .logo {
-  font-size: 25px;
-  font-weight: bold;
-  color: #6554d9;
+  font-size: 27px;
+  font-weight: 800;
+  color: var(--purple);
 }
 
-.tag {
-  background: #e8e4ff;
-  color: #6554d9;
-  padding: 9px 14px;
-  border-radius: 20px;
-  font-size: 12px;
+.logo small {
+  display: block;
+  font: 11px Inter, sans-serif;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.avatar {
+  width: 43px;
+  height: 43px;
+  border-radius: 15px;
+  background: var(--panel2);
+  display: grid;
+  place-items: center;
+  font-size: 21px;
+}
+
+.welcome {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 25px;
+  margin: 5px 0 20px;
 }
 
 .hero {
-  background: linear-gradient(135deg, #7465ed, #a18cf7);
-  padding: 35px 25px;
-  border-radius: 25px;
-  color: white;
-  text-align: center;
-  box-shadow: 0 12px 25px #bcb2ed;
+  background: linear-gradient(135deg,#7255d8,#3b347d);
+  padding: 25px;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 28px;
 }
 
-.hero .emoji {
-  font-size: 55px;
-  margin-bottom: 15px;
+.hero:after {
+  content: "🌍";
+  position: absolute;
+  left: 12px;
+  bottom: 4px;
+  font-size: 85px;
+  opacity: .2;
 }
 
-.hero h1 {
-  font-size: 29px;
-  line-height: 1.3;
-  margin: 5px 0 12px;
+.hero h2 {
+  font-size: 23px;
+  margin: 0 0 8px;
 }
 
 .hero p {
-  font-size: 14px;
-  line-height: 1.7;
-  opacity: .95;
+  color: #e2dcff;
+  font-size: 13px;
+  line-height: 1.9;
+  max-width: 75%;
+}
+
+.primary {
+  background: white;
+  color: #49368e;
+  border: 0;
+  padding: 11px 19px;
+  border-radius: 12px;
+  font-weight: 800;
 }
 
 .section-title {
-  font-size: 20px;
-  margin: 30px 0 15px;
+  font-size: 18px;
+  margin: 25px 0 14px;
 }
 
-.language {
-  background: white;
+.course {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 19px;
   padding: 17px;
-  border-radius: 17px;
-  margin-bottom: 12px;
   display: flex;
   align-items: center;
   gap: 15px;
-  border: 2px solid transparent;
-  cursor: pointer;
+  margin-bottom: 12px;
 }
 
-.language.selected {
-  border-color: #7665e9;
-  background: #f0edff;
-}
-
-.flag {
-  font-size: 32px;
-}
-
-.language strong {
-  display: block;
-  font-size: 15px;
-}
-
-.language small {
-  color: #89879c;
-}
-
-button {
-  width: 100%;
-  padding: 17px;
-  border: none;
+.course-icon {
+  width: 53px;
+  height: 53px;
+  background: var(--panel2);
   border-radius: 15px;
-  background: #6554d9;
-  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 27px;
+  flex-shrink: 0;
+}
+
+.course-info { flex: 1; }
+
+.course-info strong {
+  display: block;
+  font-size: 16px;
+}
+
+.course-info small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.tag {
+  background: rgba(115,214,174,.13);
+  color: var(--green);
+  padding: 5px 9px;
+  border-radius: 9px;
+  font-size: 10px;
+}
+
+.locked { opacity: .55; }
+
+.locked .tag {
+  background: var(--panel2);
+  color: var(--muted);
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 20px;
+  border-radius: 19px;
+  margin-bottom: 14px;
+}
+
+.card h3 { margin: 0 0 12px; }
+
+.english {
+  font-family: Inter, sans-serif;
+  direction: ltr;
+  text-align: left;
+}
+
+.translation {
+  color: var(--purple);
   font-size: 17px;
-  font-weight: bold;
-  margin-top: 15px;
-  cursor: pointer;
+  margin-top: 7px;
 }
 
-button:active {
-  transform: scale(.98);
+.muted { color: var(--muted); }
+
+.progress {
+  height: 8px;
+  border-radius: 20px;
+  background: var(--panel2);
+  overflow: hidden;
+  margin-top: 12px;
 }
 
-.message {
-  text-align: center;
-  margin-top: 20px;
-  color: #6554d9;
-  font-weight: bold;
+.progress div {
+  background: var(--green);
+  height: 100%;
+  width: 0%;
+  transition: .3s;
+}
+
+.action {
+  border: 0;
+  background: var(--purple2);
+  color: white;
+  border-radius: 13px;
+  padding: 12px 20px;
+  width: 100%;
+  font-weight: 700;
+  margin-top: 12px;
+}
+
+.secondary {
+  background: var(--panel2);
+  color: var(--text);
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 650px;
+  background: #1b1930;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 5px calc(12px + env(safe-area-inset-bottom));
+  z-index: 5;
+}
+
+.nav-btn {
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 11px;
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+}
+
+.nav-btn span { font-size: 21px; }
+.nav-btn.active { color: var(--purple); }
+
+.page { display: none; }
+.page.active { display: block; }
+
+.option {
+  width: 100%;
+  text-align: right;
+  background: var(--panel2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 13px;
+  margin: 6px 0;
+}
+
+.option.correct {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.option.wrong {
+  border-color: #ed7777;
+  color: #ed7777;
+}
+
+.lesson-number {
+  color: var(--purple);
+  font-size: 12px;
 }
 
 .footer {
   text-align: center;
-  color: #9995ae;
-  font-size: 12px;
-  margin: 35px 0 10px;
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 35px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="app">
 
-  <div class="header">
-    <div class="logo">Lingua ✨</div>
-    <div class="tag">MY FIRST APP</div>
+<header>
+  <div class="logo">
+    زمانزان
+    <small>ZMANZAN</small>
   </div>
+  <div class="avatar">📚</div>
+</header>
+
+<!-- HOME -->
+<section id="home" class="page active">
+
+  <div class="welcome">بەخێربێیت بۆ زمانزان 👋</div>
+  <h1>ئامادەیت بۆ فێربوونی زمان؟</h1>
 
   <div class="hero">
-    <div class="emoji">🌍</div>
-    <h1>Discover a New Language</h1>
-    <p>Explore new languages, learn new words, and open the door to new cultures.</p>
+    <h2>زمانەکان جیهانت دەکەنەوە 🌍</h2>
+    <p>
+      بە هەنگاوێکی بچووک دەست پێ بکە.
+      هەر ڕۆژێک شتێکی نوێ فێر ببە.
+    </p>
+    <button class="primary" onclick="openPage('lessons')">
+      دەست پێ بکە ←
+    </button>
   </div>
 
-  <h2 class="section-title">Choose your language</h2>
+  <h2 class="section-title">زمانی ئینگلیزی 🇬🇧</h2>
 
-  <div class="language" onclick="choose(this, 'Italian')">
-    <div class="flag">🇮🇹</div>
-    <div>
-      <strong>Italian</strong>
-      <small>Learn Italian step by step</small>
+  <div class="course" onclick="openPage('lessons')">
+    <div class="course-icon">🇬🇧</div>
+    <div class="course-info">
+      <strong>English</strong>
+      <small>فێربوونی زمانی ئینگلیزی</small>
     </div>
+    <span class="tag">چالاکە</span>
   </div>
 
-  <div class="language" onclick="choose(this, 'Spanish')">
-    <div class="flag">🇪🇸</div>
-    <div>
-      <strong>Spanish</strong>
-      <small>Discover the Spanish language</small>
+  <h2 class="section-title">زمانەکانی تر 🌎</h2>
+
+  <div class="course locked">
+    <div class="course-icon">🇪🇸</div>
+    <div class="course-info">
+      <strong class="english">Spanish</strong>
+      <small>زمانی ئیسپانی</small>
     </div>
+    <span class="tag">دواتر</span>
   </div>
 
-  <div class="language" onclick="choose(this, 'Indonesian')">
-    <div class="flag">🇮🇩</div>
-    <div>
-      <strong>Indonesian</strong>
-      <small>Start your Indonesian journey</small>
+  <div class="course locked">
+    <div class="course-icon">🇮🇹</div>
+    <div class="course-info">
+      <strong class="english">Italian</strong>
+      <small>زمانی ئیتاڵی</small>
     </div>
+    <span class="tag">دواتر</span>
   </div>
 
-  <button onclick="startLearning()">Start Learning →</button>
-
-  <div class="message" id="message">
-    Choose a language to begin 😊
+  <div class="course locked">
+    <div class="course-icon">🇹🇷</div>
+    <div class="course-info">
+      <strong class="english">Turkish</strong>
+      <small>زمانی تورکی</small>
+    </div>
+    <span class="tag">دواتر</span>
   </div>
 
-  <div class="footer">
-    Made with ❤️ by a beginner developer
+  <div class="course locked">
+    <div class="course-icon">🇮🇷</div>
+    <div class="course-info">
+      <strong class="english">Persian</strong>
+      <small>زمانی فارسی</small>
+    </div>
+    <span class="tag">دواتر</span>
   </div>
+
+  <div class="course locked">
+    <div class="course-icon">🇸🇦</div>
+    <div class="course-info">
+      <strong class="english">Arabic</strong>
+      <small>زمانی عەرەبی</small>
+    </div>
+    <span class="tag">دواتر</span>
+  </div>
+
+</section>
+
+<!-- LESSONS -->
+<section id="lessons" class="page">
+
+  <h1>وانەکانی ئینگلیزی 📚</h1>
+  <p class="muted">لە سفرەوە دەست پێ دەکەین.</p>
+
+  <div class="card">
+    <div class="lesson-number">LESSON 01</div>
+    <h3>ئەلفوبێی ئینگلیزی</h3>
+    <p class="muted">English Alphabet</p>
+    <p>فێربوونی پیتەکانی زمانی ئینگلیزی.</p>
+    <button class="action" onclick="showLesson(0)">دەست پێ بکە</button>
+  </div>
+
+  <div class="card">
+    <div class="lesson-number">LESSON 02</div>
+    <h3>سڵاو و ناسین</h3>
+    <p class="muted">Greetings and Introductions</p>
+    <button class="action" onclick="showLesson(1)">بینینی وانە</button>
+  </div>
+
+  <div class="card">
+    <div class="lesson-number">LESSON 03</div>
+    <h3>ژمارەکان</h3>
+    <p class="muted">Numbers</p>
+    <button class="action" onclick="showLesson(2)">بینینی وانە</button>
+  </div>
+
+  <div class="card">
+    <div class="lesson-number">LESSON 04</div>
+    <h3>ڕەنگەکان</h3>
+    <p class="muted">Colors</p>
+    <button class="action" onclick="showLesson(3)">بینینی وانە</button>
+  </div>
+
+</section>
+
+<!-- LESSON VIEW -->
+<section id="lessonView" class="page">
+  <button class="action secondary" onclick="openPage('lessons')">→ گەڕانەوە بۆ وانەکان</button>
+  <div id="lessonContent"></div>
+  <button class="action" onclick="completeLesson()">تەواوکردنی وانە ✓</button>
+</section>
+
+<!-- VOCABULARY -->
+<section id="words" class="page">
+
+  <h1>وشەکان 📖</h1>
+  <p class="muted">وشەی ئینگلیزی و واتای کوردیی فێر ببە.</p>
+
+  <div id="wordList"></div>
+
+</section>
+
+<!-- PROGRESS -->
+<section id="progress" class="page">
+
+  <h1>پێشکەوتنت ⭐</h1>
+
+  <div class="card">
+    <h3>وانە تەواوکراوەکان</h3>
+    <h2 id="completedCount">0 / 4</h2>
+    <div class="progress"><div id="progressBar"></div></div>
+    <p class="muted">بەردەوام بە، هەنگاو بە هەنگاو!</p>
+  </div>
+
+  <div class="card">
+    <h3>ئامانجمان 🎯</h3>
+    <p>هەر ڕۆژێک شتێکی نوێ فێر ببە.</p>
+    <p class="muted">بچووک دەست پێ بکە، گەورە ببە.</p>
+  </div>
+
+</section>
+
+<div class="footer">
+  Zmanzan © 2026 · زمانزان
+</div>
 
 </div>
 
+<!-- NAVIGATION -->
+<nav class="bottom-nav">
+  <button class="nav-btn active" onclick="openPage('home',this)">
+    <span>🏠</span>سەرەتا
+  </button>
+  <button class="nav-btn" onclick="openPage('lessons',this)">
+    <span>📚</span>وانەکان
+  </button>
+  <button class="nav-btn" onclick="openPage('words',this)">
+    <span>📖</span>وشەکان
+  </button>
+  <button class="nav-btn" onclick="openPage('progress',this)">
+    <span>⭐</span>پێشکەوتن
+  </button>
+</nav>
+
 <script>
-let selectedLanguage = "";
 
-function choose(element, language) {
-  document.querySelectorAll(".language").forEach(item => {
-    item.classList.remove("selected");
-  });
+const lessons = [
+{
+ title: "ئەلفوبێی ئینگلیزی",
+ subtitle: "English Alphabet",
+ intro: "زمانی ئینگلیزی ٢٦ پیتی هەیە.",
+ items: [
+  ["A a","ئەی"],["B b","بی"],["C c","سی"],
+  ["D d","دی"],["E e","ئی"],["F f","ئێف"],
+  ["G g","جی"],["H h","ئێچ"],["I i","ئای"],
+  ["J j","جەی"],["K k","کەی"],["L l","ئێل"],
+  ["M m","ئێم"],["N n","ئێن"],["O o","ئۆ"],
+  ["P p","پی"],["Q q","کیو"],["R r","ئار"],
+  ["S s","ئێس"],["T t","تی"],["U u","یو"],
+  ["V v","ڤی"],["W w","دابڵیو"],
+  ["X x","ئێکس"],["Y y","وای"],["Z z","زێد"]
+ ]
+},
+{
+ title: "سڵاو و ناسین",
+ subtitle: "Greetings and Introductions",
+ intro: "فێری چەند دەربڕینێکی گرنگ ببە.",
+ items: [
+  ["Hello","سڵاو"],["Good morning","بەیانی باش"],
+  ["Good evening","ئێوارە باش"],
+  ["How are you?","چۆنی؟"],
+  ["I am fine","باشم"],
+  ["Thank you","سوپاس"],
+  ["Goodbye","خواحافیز"]
+ ]
+},
+{
+ title: "ژمارەکان",
+ subtitle: "Numbers",
+ intro: "ژمارە بنەڕەتییەکانی ئینگلیزی فێر ببە.",
+ items: [
+  ["One","یەک"],["Two","دوو"],["Three","سێ"],
+  ["Four","چوار"],["Five","پێنج"],
+  ["Six","شەش"],["Seven","حەوت"],
+  ["Eight","هەشت"],["Nine","نۆ"],["Ten","دە"]
+ ]
+},
+{
+ title: "ڕەنگەکان",
+ subtitle: "Colors",
+ intro: "فێری ناوی ڕەنگەکان ببە.",
+ items: [
+  ["Red","سوور"],["Blue","شین"],["Green","سەوز"],
+  ["Yellow","زەرد"],["Black","ڕەش"],
+  ["White","سپی"],["Orange","پرتەقاڵی"],
+  ["Purple","مۆر"]
+ ]
+}
+];
 
-  element.classList.add("selected");
-  selectedLanguage = language;
+const vocabulary = [
+ ["Hello","سڵاو"],["Thank you","سوپاس"],
+ ["Water","ئاو"],["Book","کتێب"],
+ ["House","ماڵ"],["Friend","هاوڕێ"],
+ ["Beautiful","جوان"],["Love","خۆشەویستی"],
+ ["Food","خواردن"],["School","قوتابخانە"],
+ ["Family","خێزان"],["Good","باش"]
+];
 
-  document.getElementById("message").innerText =
-    language + " selected! 🎉";
+let completed = JSON.parse(localStorage.getItem("zmanzanDone") || "[]");
+let currentLesson = 0;
+
+function openPage(id, button) {
+ document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+
+ document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+ if(button) button.classList.add("active");
+
+ if(id === "progress") updateProgress();
+ if(id === "words") renderWords();
+
+ window.scrollTo(0,0);
 }
 
-function startLearning() {
-  if (!selectedLanguage) {
-    document.getElementById("message").innerText =
-      "Please choose a language first!";
-    return;
-  }
+function showLesson(index) {
+ currentLesson = index;
+ const lesson = lessons[index];
 
-  document.getElementById("message").innerText =
-    "Welcome to your " + selectedLanguage +
-    " learning journey! 🚀";
+ let html = `
+ <div class="card">
+ <div class="lesson-number">LESSON 0${index+1}</div>
+ <h2>${lesson.title}</h2>
+ <p class="english">${lesson.subtitle}</p>
+ <p>${lesson.intro}</p>
+ </div>`;
+
+ lesson.items.forEach(item => {
+ html += `
+ <div class="card">
+ <h2 class="english">${item[0]}</h2>
+ <div class="translation">${item[1]}</div>
+ </div>`;
+ });
+
+ document.getElementById("lessonContent").innerHTML = html;
+ openPage("lessonView");
 }
+
+function completeLesson() {
+ if(!completed.includes(currentLesson)) {
+   completed.push(currentLesson);
+   localStorage.setItem("zmanzanDone",JSON.stringify(completed));
+ }
+ updateProgress();
+ openPage("lessons");
+}
+
+function updateProgress() {
+ document.getElementById("completedCount").textContent =
+ completed.length + " / " + lessons.length;
+
+ document.getElementById("progressBar").style.width =
+ (completed.length / lessons.length * 100) + "%";
+}
+
+function renderWords() {
+ const list = document.getElementById("wordList");
+ list.innerHTML = vocabulary.map(item => `
+ <div class="card">
+ <h3 class="english">${item[0]}</h3>
+ <div class="translation">${item[1]}</div>
+ </div>
+ `).join("");
+}
+
+updateProgress();
+
 </script>
 
 </body>
